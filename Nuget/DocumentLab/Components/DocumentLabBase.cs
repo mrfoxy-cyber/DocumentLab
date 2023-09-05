@@ -41,7 +41,6 @@
         ProcessImageOperation.Downsample, 
         documentBitmap.ToByteArray(Ocr.Constants.ConvertBetween)
       );
-
       var ocrResults = ocr.PerformOcr(documentBitmap, downscaledDocumentBitmap);
       var analyzedPage = pageAnalyzer.PerformPageAnalysis(ocrResults);
       var trimmedPage = pageTrimmer.TrimPage(analyzedPage);

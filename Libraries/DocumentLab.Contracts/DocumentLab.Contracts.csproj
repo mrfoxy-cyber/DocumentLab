@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DocumentLab.Contracts</RootNamespace>
     <AssemblyName>DocumentLab.Contracts</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
     <SccProjectName>SAK</SccProjectName>
@@ -73,6 +73,10 @@
     <Compile Include="Contracts\PageAnalysis\Page.cs" />
     <Compile Include="Contracts\PageAnalysis\PageUnit.cs" />
     <Compile Include="Contracts\PageAnalysis\PageUnitBoundingBox.cs" />
+    <Compile Include="Contracts\PageClassifier\ClassifierResult.cs" />
+    <Compile Include="Contracts\PageClassifier\PageClassifier.cs" />
+    <Compile Include="Contracts\PageClassifier\PageClassifierProbabilities.cs" />
+    <Compile Include="Contracts\PageClassifier\PageRule.cs" />
     <Compile Include="Contracts\PageInterpreter\AnalyzedQuery.cs" />
     <Compile Include="Contracts\PageInterpreter\AnalyzedTableColumns.cs" />
     <Compile Include="Contracts\PageInterpreter\Coordinate.cs" />

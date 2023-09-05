@@ -1,6 +1,6 @@
 ﻿{
-    "RoundOffX": 30,
-    "RoundOffY": 30,
+    "RoundOffX": 3,
+    "RoundOffY": 3,
     "TrimX": 15,
     "TrimY": 15
 }

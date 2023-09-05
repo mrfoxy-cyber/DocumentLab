@@ -33,7 +33,7 @@
         return (IEnumerable<string>)MemoryCache.Default[cacheKey];
 
       var fileLines =  GetFileContent(Path.Combine(AppDomain.CurrentDomain.RelativeSearchPath ?? AppDomain.CurrentDomain.BaseDirectory, filePath))
-          .Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+          .Split(new string[] { "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
       MemoryCache.Default.Add(new CacheItem(cacheKey, fileLines), new CacheItemPolicy());
 

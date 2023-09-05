@@ -4,8 +4,10 @@
   using ImageMagick;
   using System.Linq;
   using System.Collections.Generic;
+    using System.IO;
+    using System;
 
-  public class EnhanceForOcrStrategy : IProcessImageStrategy
+    public class EnhanceForOcrStrategy : IProcessImageStrategy
   {
     public IEnumerable<byte> PreProcess(IEnumerable<byte> bitmap)
     {
@@ -17,14 +19,14 @@
         processed.Normalize();
 
         // Denoise
-        using (var denoise = processed.Clone())
-        {
-          denoise.ColorSpace = ColorSpace.Gray;
-          denoise.Negate();
-          denoise.AdaptiveThreshold(10, 10, new Percentage(5));
-          denoise.ContrastStretch(new Percentage(0));
-          processed.Composite(denoise, CompositeOperator.CopyAlpha);
-        }
+        //using (var denoise = processed.Clone())
+        //{
+        //  denoise.ColorSpace = ColorSpace.Gray;
+        //  denoise.Negate();
+        //  denoise.AdaptiveThreshold(10, 10, new Percentage(5));
+        //  denoise.ContrastStretch(new Percentage(0));
+        //  processed.Composite(denoise, CompositeOperator.CopyAlpha);
+        //}
         processed.Opaque(MagickColors.Transparent, MagickColors.White);
         processed.Alpha(AlphaOption.Off);
 
@@ -46,7 +48,16 @@
         processed.BorderColor = MagickColors.White;
         processed.Border(15);
 
-        return processed.ToByteArray();
+                //var path = (Path.Combine(AppDomain.CurrentDomain.RelativeSearchPath ?? AppDomain.CurrentDomain.BaseDirectory, "parts\\"));
+
+                //if (!Directory.Exists("parts"))
+                //{
+                //    Directory.CreateDirectory(path);
+                //}
+
+                //File.WriteAllBytes(path + Directory.GetFiles(path).Length + ".png", processed.ToByteArray());
+
+                return processed.ToByteArray();
       }
     }
   }

@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props" Condition="Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props')" />
+  <Import Project="..\packages\EmguCV.3.1.0.1\build\EmguCV.props" Condition="Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{49EA7FD6-1A39-4741-A5A7-A73801933D3E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DocumentLab.PageClassifier</RootNamespace>
+    <AssemblyName>DocumentLab.PageClassifier</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Emgu.CV.UI, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI.GL, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.UI.GL.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.World, Version=3.1.0.2282, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmguCV.3.1.0.1\lib\net30\Emgu.CV.World.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET-Q8-x64, Version=13.2.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=AMD64">
+      <HintPath>..\packages\Magick.NET-Q8-x64.13.2.0\lib\netstandard20\Magick.NET-Q8-x64.dll</HintPath>
+    </Reference>
+    <Reference Include="Magick.NET.Core, Version=13.2.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET.Core.13.2.0\lib\netstandard20\Magick.NET.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=4.8.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.4.8.1\lib\net461\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.1.1.2225.0\lib\net20\OpenTK.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK.GLControl, Version=1.1.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.GLControl.1.1.2225.0\lib\net20\OpenTK.GLControl.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpLearning.Common.Interfaces, Version=0.31.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpLearning.Common.Interfaces.0.31.8\lib\net461\SharpLearning.Common.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpLearning.Containers, Version=0.31.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpLearning.Containers.0.31.8\lib\net461\SharpLearning.Containers.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpLearning.InputOutput, Version=0.31.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpLearning.InputOutput.0.31.8\lib\net461\SharpLearning.InputOutput.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpLearning.Metrics, Version=0.31.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpLearning.Metrics.0.31.8\lib\net461\SharpLearning.Metrics.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpLearning.Neural, Version=0.31.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpLearning.Neural.0.31.8\lib\net461\SharpLearning.Neural.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZedGraph.5.1.5\lib\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classifying.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Applications\DocumentLab.Application\DocumentLab.Application.csproj">
+      <Project>{e6a4cc0e-487e-448d-b61e-e05d9958b53e}</Project>
+      <Name>DocumentLab.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Applications\DocumentLab.Web\DocumentLab.Web.csproj">
+      <Project>{a235ef9d-2df4-4603-9197-a5f946ed5ae3}</Project>
+      <Name>DocumentLab.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\DocumentLab.Contracts\DocumentLab.Contracts.csproj">
+      <Project>{57bdf394-9bdd-49e8-ae1a-3436f73d1451}</Project>
+      <Name>DocumentLab.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\DocumentLab.Core\DocumentLab.Core.csproj">
+      <Project>{a82eb56d-ea9c-4e0b-b411-e8e8bb16fab9}</Project>
+      <Name>DocumentLab.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\DocumentLab.FluentQuery\DocumentLab.FluentQuery.csproj">
+      <Project>{55f25b67-d183-46f7-8489-fc096b82e86b}</Project>
+      <Name>DocumentLab.FluentQuery</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\DocumentLab.ImageProcessing\DocumentLab.ImageProcessor.csproj">
+      <Project>{c5f9819f-5a25-40e5-bff0-865b40bc3623}</Project>
+      <Name>DocumentLab.ImageProcessor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\DocumentLab.Ocr\DocumentLab.Ocr.csproj">
+      <Project>{c86347f7-eabc-4541-916d-414f8f8b48d2}</Project>
+      <Name>DocumentLab.Ocr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\DocumentLab.PageAnalyzer\DocumentLab.PageAnalyzer.csproj">
+      <Project>{431f6728-67e7-4a0b-819d-6efd8872a108}</Project>
+      <Name>DocumentLab.PageAnalyzer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\DocumentLab.PageInterpreter\DocumentLab.PageInterpreter.csproj">
+      <Project>{4a714576-905e-43d2-8347-95190490fe60}</Project>
+      <Name>DocumentLab.PageInterpreter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\DocumentLab.TextAnalyzer\DocumentLab.TextAnalyzer.csproj">
+      <Project>{347d62f9-14eb-408b-bbf9-240850f27721}</Project>
+      <Name>DocumentLab.TextAnalyzer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nuget\DocumentLab\DocumentLab.csproj">
+      <Project>{2e423f58-1944-49b8-b84f-f8c982424577}</Project>
+      <Name>DocumentLab</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test\DocumentLab.CoreTest\DocumentLab.CoreTest.csproj">
+      <Project>{3f941450-8dc8-47b4-8a34-b51b3cb04b7e}</Project>
+      <Name>DocumentLab.CoreTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test\DocumentLab.FluentQueryTest\DocumentLab.FluentQueryTest.csproj">
+      <Project>{8527ffca-3077-4659-9f4d-22a730c67678}</Project>
+      <Name>DocumentLab.FluentQueryTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test\DocumentLab.PageAnalyzerUnitTest\DocumentLab.PageAnalyzerUnitTest.csproj">
+      <Project>{815813d8-e5c5-40aa-89a3-9e286fa5a619}</Project>
+      <Name>DocumentLab.PageAnalyzerUnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test\DocumentLab.PageInterpreterUnitTest\DocumentLab.PageInterpreterUnitTest.csproj">
+      <Project>{b83fa34e-422f-41f8-9c28-14bc247a971b}</Project>
+      <Name>DocumentLab.PageInterpreterUnitTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test\DocumentLab.Test\DocumentLab.Test.csproj">
+      <Project>{658ba695-7061-420f-8361-134395cf0781}</Project>
+      <Name>DocumentLab.Test</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test\DocumentLab.TextAnalyzerUnitTest\DocumentLab.TextAnalyzerUnitTest.csproj">
+      <Project>{16a2de17-6836-44b0-9c4d-7f0081b19b66}</Project>
+      <Name>DocumentLab.TextAnalyzerUnitTest</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EmguCV.3.1.0.1\build\EmguCV.props'))" />
+    <Error Condition="!Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EmguCV.3.1.0.1\build\EmguCV.targets'))" />
+    <Error Condition="!Exists('..\packages\Magick.NET-Q8-x64.13.2.0\build\netstandard20\Magick.NET-Q8-x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Magick.NET-Q8-x64.13.2.0\build\netstandard20\Magick.NET-Q8-x64.targets'))" />
+    <Error Condition="!Exists('..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PdfiumViewer.Native.x86_64.v8-xfa.2018.4.8.256\Build\PdfiumViewer.Native.x86_64.v8-xfa.props'))" />
+    <Error Condition="!Exists('..\packages\MathNet.Numerics.MKL.Win.2.3.0\build\MathNet.Numerics.MKL.Win.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MathNet.Numerics.MKL.Win.2.3.0\build\MathNet.Numerics.MKL.Win.targets'))" />
+  </Target>
+  <Import Project="..\packages\EmguCV.3.1.0.1\build\EmguCV.targets" Condition="Exists('..\packages\EmguCV.3.1.0.1\build\EmguCV.targets')" />
+  <Import Project="..\packages\Magick.NET-Q8-x64.13.2.0\build\netstandard20\Magick.NET-Q8-x64.targets" Condition="Exists('..\packages\Magick.NET-Q8-x64.13.2.0\build\netstandard20\Magick.NET-Q8-x64.targets')" />
+  <Import Project="..\packages\MathNet.Numerics.MKL.Win.2.3.0\build\MathNet.Numerics.MKL.Win.targets" Condition="Exists('..\packages\MathNet.Numerics.MKL.Win.2.3.0\build\MathNet.Numerics.MKL.Win.targets')" />
+</Project>

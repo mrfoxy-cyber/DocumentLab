@@ -64,6 +64,8 @@
             case "pdf": bitmap = (Bitmap)PdfDocument.Load(ms).Render(0, 300, 300, PdfRenderFlags.CorrectFromDpi); break;
           }
 
+
+
           return new PostAnalyzeDocumentResponse()
           {
             AnalyzedDocument = interpreter.AnalyzePage(bitmap),

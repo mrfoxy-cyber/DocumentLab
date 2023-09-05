@@ -24,12 +24,20 @@
       }
     }
 
-    public static Bitmap ToBitmap(this IEnumerable<byte> byteArray)
-    {
-      using (var ms = new MemoryStream(byteArray.ToArray()))
-      {
-        return new Bitmap(ms);
-      }
+        public static Bitmap ToBitmap(this IEnumerable<byte> byteArray)
+        {
+            using (var ms = new MemoryStream(byteArray.ToArray()))
+            {
+                return new Bitmap(ms);
+            }
+        }
+
+        public static Bitmap ToBitmap(byte[] byteArray)
+        {
+            using (var ms = new MemoryStream(byteArray))
+            {
+                return new Bitmap(ms);
+            }
+        }
     }
-  }
 }

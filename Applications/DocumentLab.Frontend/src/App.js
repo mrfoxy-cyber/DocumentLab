@@ -207,6 +207,7 @@ class App extends Component {
     div.innerHTML = character;
     div.className = `cgmr codicon ${className}`;
 
+
     var lineNumbers = document.getElementsByClassName('margin-view-overlays')[0]
 
     if (lineNumbers) {
@@ -403,6 +404,7 @@ class App extends Component {
     
     const codeContent = (
         <div className="FullHeight CodeCard" ref={this.editorContainer}>
+          <button onClick={() => {navigator.clipboard.writeText(result[selectedDocumentIndex].data)}}>JSON</button>
         <MonacoEditor 
           onChange={this.onKeyDown} 
           editorDidMount={this.editorDidMount}
