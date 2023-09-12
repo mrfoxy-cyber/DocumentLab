@@ -55,9 +55,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Libraries\DocumentLab.Contracts\DocumentLab.Contracts.csproj">
       <Project>{57bdf394-9bdd-49e8-ae1a-3436f73d1451}</Project>
       <Name>DocumentLab.Contracts</Name>
@@ -70,6 +67,9 @@
       <Project>{4A714576-905E-43D2-8347-95190490FE60}</Project>
       <Name>DocumentLab.PageInterpreter</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

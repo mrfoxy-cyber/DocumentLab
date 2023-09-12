@@ -1,6 +1,7 @@
 ﻿namespace DocumentLab.Web.Controllers
 {
   using DocumenLab;
+  using DocumentLab.PageClassifier;
   using DocumentLab.Web.Models;
   using PdfiumViewer;
   using System;
@@ -92,6 +93,46 @@
       {
         TextTypes = interpreter.GetDefinedTextTypes()
       };
+    }
+
+    [HttpPost]
+    [Route("rebuild")]
+    public void RebuildModel(PostRebuildModelRequest request)
+    {
+      var classifying = new Classifying();
+      classifying.CreateNeuralNetwork("PageClassifier", request.FolderPath);
+    }
+
+    [HttpPost]
+    [Route("predict")]
+    public PostPredictionResponse PredictClass(PostPredictionRequest request)
+    {
+      var replaceRegex = "\\w+\\:\\w+\\/(\\w+)\\;base64\\,";
+      var fileTypeRegex = "(?!<=\\w+\\:\\w+\\/)(\\w+)(?=\\;base64\\,)";
+      var fileType = Regex.Match(request.ImageAsBase64, fileTypeRegex).Value;
+
+      var base64 = request.ImageAsBase64.Replace(Regex.Match(request.ImageAsBase64, replaceRegex).Value, "");
+
+      using (var ms = new MemoryStream(Convert.FromBase64String(base64)))
+      {
+
+        Bitmap bitmap = null;
+        switch (fileType)
+        {
+          case "png": bitmap = (Bitmap)Image.FromStream(ms); break;
+          case "pdf": bitmap = (Bitmap)PdfDocument.Load(ms).Render(0, 300, 300, PdfRenderFlags.CorrectFromDpi); break;
+        }
+
+        var classifying = new Classifying();
+
+        return new PostPredictionResponse()
+        {
+          Message = (classifying.Predict(request.FolderPath, "PageClassifier.xml", bitmap)).ToString(),
+          //Message = "test am i here",
+          Result = PostPredictionResult.Success
+        };
+
+      }
     }
   }
 }

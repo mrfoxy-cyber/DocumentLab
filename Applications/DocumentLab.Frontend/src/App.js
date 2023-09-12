@@ -26,7 +26,8 @@ class App extends Component {
       imgHeight: 0,
       imgWidth: 0,
       offsetLeft: 0,
-      editorDecorations: []
+      editorDecorations: [],
+      path: ""
     }
     this.imgRef = React.createRef();
     this.editorContainer = React.createRef();
@@ -123,9 +124,6 @@ class App extends Component {
 
   editorDidMount(editor, monaco) {
     editor.focus();
-        
-        editor.trigger(3, null, { })
-        editor.trigger(2, null, { })
   }
 
   dragOver = (e) => {
@@ -404,7 +402,44 @@ class App extends Component {
     
     const codeContent = (
         <div className="FullHeight CodeCard" ref={this.editorContainer}>
-          <button onClick={() => {navigator.clipboard.writeText(result[selectedDocumentIndex].data)}}>JSON</button>
+          <button onClick=
+          {() =>  {
+                    axios.post("https://localhost:44343/api/document/rebuild", 
+                    { 
+                      folderPath: this.state.path 
+                    })
+                    .then(res => {
+                      console.log("Done!")
+                    })
+                  }
+          }>New classifier</button>
+          <div>
+            <input placeholder="Full path for the invoices" onInput={(p) => this.setState({path: p.target.value})} />
+          </div>
+          <button onClick={(e) => 
+            {
+              axios.post("https://localhost:44343/api/document/predict", 
+              { 
+                FolderPath: this.state.path,
+                ImageAsBase64: result[selectedDocumentIndex].imageBase64
+              })
+              .then(PostPredictionResponse => {
+                this.editor.current.editor.setValue(PostPredictionResponse.data.Message)
+                console.log("Done!")
+                console.log(this.editor)
+              })
+            }
+            
+            }>Predict</button>
+
+<button onClick={(e) => 
+            {
+              navigator.clipboard.writeText(result[selectedDocumentIndex].data)
+            }
+            
+            }>Copy to Clipboard JSON</button>
+            
+
         <MonacoEditor 
           onChange={this.onKeyDown} 
           editorDidMount={this.editorDidMount}
